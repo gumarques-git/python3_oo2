@@ -50,13 +50,11 @@ class Serie(Programa):
 
 
 
-class Playlist:
+class Playlist(list):
     def __init__(self, nome, programas):
         self.nome = nome.title()
-        self.programas = programas
+        super().__init__(programas)
 
-    def tamanho(self):
-        return len(self.programas)
 
 
 
@@ -76,6 +74,8 @@ listinha = [vinga, atlan, demol, tmepa]
 playlist_fds = Playlist('fim de semana', listinha)
 
 print(f'Playlist: {playlist_fds.nome}')
-for programa in playlist_fds.programas:
+print(f'Tamanho da playlist: {len(playlist_fds.nome)}')
+print(f'Demolidor na playlist? : {demol in playlist_fds}\n')
+for programa in playlist_fds:
     print(programa)
 
