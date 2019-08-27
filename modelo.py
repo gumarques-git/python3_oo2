@@ -49,13 +49,29 @@ class Serie(Programa):
         return f'Serie: {self.nome} || Ano: {self.ano} || {self.temporadas} temporadas || {self.likes} likes'
 
 
-
-class Playlist(list):
+# Herdar de um built-in pode ser muito complexo. Existe muita funcionalidade nao conhecida
+# Eh boa pratica ter controle sobre a classe que esta criando, deixar ela mais coesa.
+# Vamos usar somente o que interessa da classe list dessa vez
+class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome.title()
-        super().__init__(programas)
+        self.__programas = programas
 
+    @property
+    def nome(self):
+        return self.__nome
 
+    @nome.setter
+    def nome(self, novo_nome):
+        self.__nome = novo_nome.title()
+
+    @property
+    def listagem(self):
+        return self.__programas
+
+    @property
+    def tamanho(self):
+        return len(self.__programas)
 
 
 vinga = Filme('vingadores - guerra infinita', 2018, 160)
@@ -74,8 +90,8 @@ listinha = [vinga, atlan, demol, tmepa]
 playlist_fds = Playlist('fim de semana', listinha)
 
 print(f'Playlist: {playlist_fds.nome}')
-print(f'Tamanho da playlist: {len(playlist_fds)}')
-print(f'Demolidor na playlist? : {demol in playlist_fds}\n')
-for programa in playlist_fds:
+print(f'Tamanho da playlist: {playlist_fds.tamanho}')
+print(f'Demolidor na playlist? : {demol in playlist_fds.listagem}\n')
+for programa in playlist_fds.listagem:
     print(programa)
 
