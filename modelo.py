@@ -27,6 +27,7 @@ class Programa:
         return f'Nome: {self.nome} || Ano: {self.ano} || {self.likes} likes '
 
 
+
 class Filme(Programa):
 
     def __init__(self, nome, ano, duracao):
@@ -35,6 +36,8 @@ class Filme(Programa):
 
     def __str__(self):
         return  f'Filme: {self.nome} || Ano: {self.ano} || {self.duracao} minutos || {self.likes} likes'
+
+
 
 class Serie(Programa):
 
@@ -46,25 +49,33 @@ class Serie(Programa):
         return f'Serie: {self.nome} || Ano: {self.ano} || {self.temporadas} temporadas || {self.likes} likes'
 
 
-vinga = Filme('vingadores - guerra infinita', 2018, 160)
-vinga.dar_like(), vinga.dar_like(), vinga.dar_like(), vinga.dar_like()
 
+class Playlist:
+    def __init__(self, nome, programas):
+        self.nome = nome.title()
+        self.programas = programas
+
+    def tamanho(self):
+        return len(self.programas)
+
+
+
+vinga = Filme('vingadores - guerra infinita', 2018, 160)
+tmepa = Filme('todo mundo em panico', 1999, 100)
 atlan = Serie('atlanta', 2018, 2)
+demol = Serie('demolidor', 2016, 2)
+
+vinga.dar_like(), vinga.dar_like(), vinga.dar_like(), vinga.dar_like()
+tmepa.dar_like(), tmepa.dar_like()
 atlan.dar_like(), atlan.dar_like()
+demol.dar_like(), demol.dar_like(), demol.dar_like()
+
 
 # Novo exemplo, sobrescrevendo metodo da super classe
-filmes_e_series = [vinga, atlan]
+listinha = [vinga, atlan, demol, tmepa]
+playlist_fds = Playlist('fim de semana', listinha)
 
-for programa in filmes_e_series:
+print(f'Playlist: {playlist_fds.nome}')
+for programa in playlist_fds.programas:
     print(programa)
 
-
-# # Por tras o Python transforma o int em string para imprimir
-# # Como nos dois print abaixo.
-# meu_int = 178263
-# print(f'Meu int: {meu_int}')
-# print(f'Meu int: {str(meu_int)}')
-
-# lista = [1, 2, 4, 5]
-# print(repr(lista))
-# # Se pegarmos o resultado do print, conseguimos recriar o objeto lista.
