@@ -22,6 +22,8 @@ class Programa:
     def dar_like(self):
         self.__likes += 1
 
+    def imprime(self):
+        print(f'Nome: {self.nome} || Ano: {self.ano} || {self.likes} likes ')
 
 
 class Filme(Programa):
@@ -30,7 +32,8 @@ class Filme(Programa):
         super().__init__(nome, ano)
         self.duracao = duracao
 
-
+    def imprime(self):
+        print(f'Filme: {self.nome} || Ano: {self.ano} || {self.duracao} minutos || {self.likes} likes')
 
 class Serie(Programa):
 
@@ -38,21 +41,17 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
-
+    def imprime(self):
+        print(f'Serie: {self.nome} || Ano: {self.ano} || {self.temporadas} temporadas || {self.likes} likes')
 
 vinga = Filme('vingadores - guerra infinita', 2018, 160)
-vinga.dar_like()
-#print(f'Nome: {vinga.nome} - Ano: {vinga.ano} - Duracao: {vinga.duracao} - Likes: {vinga.likes}')
-
+vinga.dar_like(), vinga.dar_like(), vinga.dar_like()
 
 atlan = Serie('atlanta', 2018, 2)
-atlan.dar_like()
-atlan.dar_like()
-#print(f'Nome: {atlan.nome} - Ano: {atlan.ano} - Temporadas: {atlan.temporadas} - Likes: {atlan.likes}')
+atlan.dar_like(), atlan.dar_like(), atlan.dar_like(), atlan.dar_like(), atlan.dar_like()
 
-
+# Novo exemplo, sobrescrevendo metodo da super classe
 filmes_e_series = [vinga, atlan]
 
 for programa in filmes_e_series:
-    detalhes = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
-    print(f'Nome: {programa.nome} || Detalhes: {detalhes} || Likes: {programa.likes}')
+    programa.imprime()
