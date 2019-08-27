@@ -74,7 +74,7 @@ listinha = [vinga, atlan, demol, tmepa]
 playlist_fds = Playlist('fim de semana', listinha)
 
 print(f'Playlist: {playlist_fds.nome}')
-print(f'Tamanho da playlist: {len(playlist_fds.nome)}')
+print(f'Tamanho da playlist: {len(playlist_fds)}')
 print(f'Demolidor na playlist? : {demol in playlist_fds}\n')
 for programa in playlist_fds:
     print(programa)
