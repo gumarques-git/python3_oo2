@@ -22,8 +22,9 @@ class Programa:
     def dar_like(self):
         self.__likes += 1
 
-    def imprime(self):
-        print(f'Nome: {self.nome} || Ano: {self.ano} || {self.likes} likes ')
+#   Special methods or Dunder Methods (Dunder coz double underscore)
+    def __str__(self):
+        return f'Nome: {self.nome} || Ano: {self.ano} || {self.likes} likes '
 
 
 class Filme(Programa):
@@ -32,8 +33,8 @@ class Filme(Programa):
         super().__init__(nome, ano)
         self.duracao = duracao
 
-    def imprime(self):
-        print(f'Filme: {self.nome} || Ano: {self.ano} || {self.duracao} minutos || {self.likes} likes')
+    def __str__(self):
+        return  f'Filme: {self.nome} || Ano: {self.ano} || {self.duracao} minutos || {self.likes} likes'
 
 class Serie(Programa):
 
@@ -41,17 +42,29 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
-    def imprime(self):
-        print(f'Serie: {self.nome} || Ano: {self.ano} || {self.temporadas} temporadas || {self.likes} likes')
+    def __str__(self):
+        return f'Serie: {self.nome} || Ano: {self.ano} || {self.temporadas} temporadas || {self.likes} likes'
+
 
 vinga = Filme('vingadores - guerra infinita', 2018, 160)
-vinga.dar_like(), vinga.dar_like(), vinga.dar_like()
+vinga.dar_like(), vinga.dar_like(), vinga.dar_like(), vinga.dar_like()
 
 atlan = Serie('atlanta', 2018, 2)
-atlan.dar_like(), atlan.dar_like(), atlan.dar_like(), atlan.dar_like(), atlan.dar_like()
+atlan.dar_like(), atlan.dar_like()
 
 # Novo exemplo, sobrescrevendo metodo da super classe
 filmes_e_series = [vinga, atlan]
 
 for programa in filmes_e_series:
-    programa.imprime()
+    print(programa)
+
+
+# # Por tras o Python transforma o int em string para imprimir
+# # Como nos dois print abaixo.
+# meu_int = 178263
+# print(f'Meu int: {meu_int}')
+# print(f'Meu int: {str(meu_int)}')
+
+# lista = [1, 2, 4, 5]
+# print(repr(lista))
+# # Se pegarmos o resultado do print, conseguimos recriar o objeto lista.
