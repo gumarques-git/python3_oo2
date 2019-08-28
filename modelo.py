@@ -57,6 +57,15 @@ class Playlist:
         self.nome = nome.title()
         self.__programas = programas
 
+# Duck typing ou utilizar um Dunder method para ganhar algumas funcionalidades como o IN e FOR IN
+# Ao usar o __getitem__ tornamos o objeto iteravel.
+    def __getitem__(self, item):
+        return self.__programas[item]
+
+# Mais um magic method ou Dunder method para utilizar o LEN automaticamente na classe.
+    def __len__(self):
+        return len(self.__programas)
+
     @property
     def nome(self):
         return self.__nome
@@ -69,9 +78,9 @@ class Playlist:
     def listagem(self):
         return self.__programas
 
-    @property
-    def tamanho(self):
-        return len(self.__programas)
+    # @property
+    # def tamanho(self):
+    #     return len(self.__programas)
 
 
 vinga = Filme('vingadores - guerra infinita', 2018, 160)
@@ -90,8 +99,8 @@ listinha = [vinga, atlan, demol, tmepa]
 playlist_fds = Playlist('fim de semana', listinha)
 
 print(f'Playlist: {playlist_fds.nome}')
-print(f'Tamanho da playlist: {playlist_fds.tamanho}')
-print(f'Demolidor na playlist? : {demol in playlist_fds.listagem}\n')
-for programa in playlist_fds.listagem:
+print(f'Tamanho da playlist: {len(playlist_fds)}')
+print(f'Demolidor na playlist? : {demol in playlist_fds}\n')
+for programa in playlist_fds:
     print(programa)
 
